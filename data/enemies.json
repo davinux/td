@@ -1,0 +1,14 @@
+{
+  "enemies": [
+    { "id": "grunt",  "name": "Grunt",   "hp": 32,   "speed": 55,  "reward": 8,   "color": "#4ade80", "r": 9,  "leak": 2,  "shape": "brute",    "desc": "Basic foot soldier" },
+    { "id": "fast",   "name": "Runner",  "hp": 20,   "speed": 100, "reward": 10,  "color": "#f472b6", "r": 7,  "leak": 1,  "shape": "dart",     "desc": "Fast and fragile" },
+    { "id": "tank",   "name": "Bulwark", "hp": 150,  "speed": 34,  "reward": 22,  "color": "#f87171", "r": 12, "leak": 3,  "shape": "armor",    "desc": "Slow, heavily armored" },
+    { "id": "swarm",  "name": "Mite",    "hp": 14,   "speed": 72,  "reward": 4,   "color": "#a3e635", "r": 6,  "leak": 1,  "shape": "beetle",   "desc": "Weak but swarms in numbers" },
+    { "id": "shield", "name": "Aegis",   "hp": 95,   "speed": 46,  "reward": 15,  "color": "#60a5fa", "r": 10, "leak": 2,  "shape": "guardian", "desc": "Protected by an energy shield" },
+    { "id": "boss",   "name": "Warlord", "hp": 1300, "speed": 28,  "reward": 150, "color": "#a855f7", "r": 16, "leak": 10, "shape": "warlord",  "desc": "Boss: huge HP, crushes lives" },
+    { "id": "wisp",    "name": "Wisp",    "hp": 16,   "speed": 115, "reward": 12,  "color": "#e0f2fe", "r": 6,  "leak": 1,  "shape": "wisp",     "desc": "Barely-there sprinter" },
+    { "id": "splitter","name": "Splitter","hp": 60,   "speed": 50,  "reward": 14,  "color": "#f0abfc", "r": 9,  "leak": 2,  "shape": "mitosis",  "desc": "Splits into 2 Mites on death", "spawnOnDeath": { "type": "swarm", "count": 2 } },
+    { "id": "golem",   "name": "Golem",   "hp": 320,  "speed": 30,  "reward": 30,  "color": "#78716c", "r": 13, "leak": 4,  "shape": "golem",    "desc": "Walking avalanche" },
+    { "id": "phantom", "name": "Phantom", "hp": 70,   "speed": 62,  "reward": 16,  "color": "#312e81", "r": 9,  "leak": 2,  "shape": "phantom",  "desc": "Immune to slow", "slowImmune": true }
+  ]
+}

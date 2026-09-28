@@ -1,0 +1,14 @@
+{
+  "towers": [
+    { "id": "arrow",   "name": "Arrow",   "cost": 50,  "range": 95,  "dmg": 9,  "rate": 2.0,  "color": "#fbbf24", "desc": "Fast, cheap" },
+    { "id": "cannon",  "name": "Cannon",  "cost": 110, "range": 85,  "dmg": 28, "rate": 0.7,  "splash": 55, "color": "#fb923c", "desc": "Splash damage" },
+    { "id": "frost",   "name": "Frost",   "cost": 80,  "range": 80,  "dmg": 4,  "rate": 1.5,  "slow": 0.5, "slowDur": 1.6, "color": "#67e8f9", "desc": "Slows enemies" },
+    { "id": "sniper",  "name": "Sniper",  "cost": 150, "range": 175, "dmg": 55, "rate": 0.55, "crit": 0.2, "critMult": 2.5, "color": "#c084fc", "desc": "Long range, 20% crit x2.5" },
+    { "id": "gatling", "name": "Gatling", "cost": 120, "range": 82,  "dmg": 5,  "rate": 6.0,  "color": "#e2e8f0", "desc": "Bullet hose" },
+    { "id": "tesla",   "name": "Tesla",   "cost": 140, "range": 95,  "dmg": 14, "rate": 1.0,  "chain": 3, "color": "#fde047", "desc": "Chain lightning x3" },
+    { "id": "missile", "name": "Missile", "cost": 180, "range": 125, "dmg": 38, "rate": 0.6,  "splash": 70, "projectile": true, "color": "#fb7185", "desc": "Homing rockets, big splash" },
+    { "id": "mortar",  "name": "Mortar",  "cost": 160, "range": 150, "dmg": 45, "rate": 0.45, "splash": 65, "minRange": 55, "color": "#a8a29e", "desc": "Huge shells, can't hit close up" },
+    { "id": "railgun", "name": "Railgun", "cost": 170, "range": 135, "dmg": 30, "rate": 0.8,  "pierce": true, "color": "#38bdf8", "desc": "Pierces every enemy in a line" },
+    { "id": "tempest", "name": "Tempest", "cost": 130, "range": 90,  "dmg": 10, "rate": 1.2,  "targets": 3, "color": "#2dd4bf", "desc": "Strikes 3 targets at once" }
+  ]
+}

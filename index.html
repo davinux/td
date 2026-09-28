@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>td.davinux.net — Tower Defense + Map Editor</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#0b1220" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="td.davinux.net" />
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+</head>
+<body>
+<header>
+  <button type="button" class="brand" id="brand-home" title="Home">
+    <span class="brand-logo"><i data-ui="castle" data-size="22"></i></span>
+    <span class="brand-text"><h1>td.davinux.net</h1><small>Tower Defense</small></span>
+  </button>
+  <nav aria-label="Main sections">
+    <button type="button" id="tab-menu" class="tab active" title="Campaign and quick play"><i data-ui="home"></i><span>Home</span></button>
+    <button type="button" id="tab-play" class="tab" title="Current battle"><i data-ui="play"></i><span>Play</span></button>
+    <button type="button" id="tab-editor" class="tab" title="Draw your own map"><i data-ui="map"></i><span>Editor</span></button>
+    <button type="button" id="tab-codex" class="tab" title="Browse every enemy"><i data-ui="enemies"></i><span>Enemies</span></button>
+    <button type="button" id="tab-showroom" class="tab" title="Browse every tower"><i data-ui="tower"></i><span>Towers</span></button>
+    <button type="button" id="tab-help" class="tab" title="How to play"><i data-ui="help"></i><span>Help</span></button>
+  </nav>
+  <div class="header-actions">
+    <button type="button" id="btn-sound-open" class="icon-btn" title="Sound settings" aria-label="Sound settings"><i data-ui="volume"></i></button>
+  </div>
+</header>
+
+<main>
+  <!-- MAIN MENU -->
+  <section id="menu-panel" class="panel menu">
+    <div class="home-hero">
+      <div id="menu3d-container" class="hidden"></div>
+      <div class="hero-overlay">
+        <span class="eyebrow">3D Tower Defense · 6 worlds · 120 maps</span>
+        <h2>Hold the road.</h2>
+        <p>Build towers, upgrade them, and survive every wave — right in your browser, even offline.</p>
+        <div class="hero-actions">
+          <button type="button" id="btn-menu-continue" class="primary big">
+            <i data-ui="play" data-size="20"></i><span class="cta-text"><b id="continue-label">Start campaign</b><small id="continue-sub">World 1 · Map 1</small></span>
+          </button>
+          <div class="hero-secondary">
+            <button type="button" id="btn-menu-campaign" class="ghost"><i data-ui="levels"></i>Levels</button>
+            <button type="button" id="btn-menu-quick" class="ghost"><i data-ui="dice"></i>Quick Play</button>
+            <button type="button" id="btn-menu-editor" class="ghost"><i data-ui="map"></i>Map Editor</button>
+          </div>
+        </div>
+        <div class="hero-progress" id="hero-progress"></div>
+      </div>
+    </div>
+
+    <div class="section-head" id="campaign-anchor">
+      <h2 class="menu-title">Campaign</h2>
+      <div id="diff-pills" class="seg" role="radiogroup" aria-label="Difficulty"></div>
+    </div>
+    <div id="world-sections"></div>
+
+    <div class="section-head"><h2 class="menu-title">Explore</h2></div>
+    <div class="explore-grid" id="explore-grid"></div>
+  </section>
+
+  <!-- HELP -->
+  <section id="help-panel" class="panel menu hidden">
+    <div class="codex-head">
+      <h2><i data-ui="help" data-size="22"></i>How to play</h2>
+      <p class="hint">Everything you need to hold the road.</p>
+    </div>
+    <div class="howto">
+      <div><b>🎯 Goal:</b> stop enemies reaching your blue base. Lose all ❤️ and it's over.</div>
+      <div><b>🏗️ Build:</b> pick a tower (keys <kbd>1</kbd>–<kbd>9</kbd>, <kbd>0</kbd>), click a green tile. Hover shows its range — green = OK, red = blocked.</div>
+      <div><b><span class="tile-ico inline" data-tile="mud"></span>Mud:</b> paint it on the road to slow enemies to 55% speed — perfect kill-zone ground. Slow-immune brutes plow through. <b><span class="tile-ico inline" data-tile="water"></span><span class="tile-ico inline" data-tile="forest"></span><span class="tile-ico inline" data-tile="rock"></span>Water, Forest &amp; Rock</b> are decorative blockers: no building, no walking, just looks.</div>
+      <div><b>🌊 Waves:</b> press <kbd>Space</kbd> to send the next wave. Clearing waves earns bonus gold.</div>
+      <div><b>⬆️ Upgrade:</b> click a placed tower, then Upgrade <kbd>U</kbd> or Sell <kbd>X</kbd>. <kbd>Esc</kbd> deselects.</div>
+      <div><b>🏆 Campaign:</b> 120 maps across 6 worlds, each on <b>Easy / Normal / Hard</b>. Pick a world, then a level; finishing a map unlocks the next, and finishing map 20 unlocks the next world. Stars (★) track your best difficulty per map — saved in your browser.</div>
+      <div><b>🎥 Views:</b> everything plays in cinematic 3D. <b>Drag</b> orbits, <b>right-drag / Shift-drag</b> pans, <b>wheel / pinch</b> zooms, <b>click</b> places and selects, <b>🎯 / C</b> recenters. In the map editor, drag paints tiles — hold <kbd>Space</kbd> while dragging to orbit instead.</div>
+    </div>
+
+    <div class="section-head"><h2 class="menu-title">Controls</h2></div>
+    <div class="keys-grid">
+      <div><kbd>Space</kbd><span>Start next wave</span></div>
+      <div><kbd>1</kbd>–<kbd>0</kbd><span>Select tower</span></div>
+      <div><kbd>U</kbd><span>Upgrade selected</span></div>
+      <div><kbd>X</kbd><span>Sell selected</span></div>
+      <div><kbd>P</kbd><span>Pause</span></div>
+      <div><kbd>F</kbd><span>Cycle speed</span></div>
+      <div><kbd>R</kbd><span>Restart run</span></div>
+      <div><kbd>G</kbd><span>Random map (Quick Play)</span></div>
+      <div><kbd>M</kbd><span>Mute</span></div>
+      <div><kbd>C</kbd><span>Recenter camera</span></div>
+      <div><kbd>Esc</kbd><span>Deselect · pause menu</span></div>
+      <div><b>Drag</b><span>Orbit · right-drag pans · wheel zooms</span></div>
+    </div>
+  </section>
+
+  <!-- ENEMY CODEX -->
+  <section id="codex-panel" class="panel menu hidden">
+    <div class="codex-head">
+      <h2><i data-ui="enemies" data-size="22"></i>Enemy Codex</h2>
+      <div class="seg codex-modes" role="group" aria-label="View">
+        <button id="codex-3d" class="tool active">3D showcase</button>
+        <button id="codex-2d" class="tool">Portraits</button>
+      </div>
+      <p class="hint">Base stats at wave 1 (Normal) — HP grows every wave. Click a card in 3D mode to inspect it.</p>
+    </div>
+    <div id="codex-stage" class="hidden"></div>
+    <div id="codex-cards" class="codex-grid"></div>
+  </section>
+
+  <!-- TOWER SHOWROOM -->
+  <section id="showroom-panel" class="panel menu hidden">
+    <div class="codex-head">
+      <h2><i data-ui="tower" data-size="22"></i>Tower Showroom</h2>
+      <div class="seg codex-modes" role="group" aria-label="View">
+        <button id="showroom-3d" class="tool active">3D showcase</button>
+        <button id="showroom-2d" class="tool">Portraits</button>
+      </div>
+      <p class="hint">Every tower, live stats and abilities. Click a card in 3D mode to inspect it.</p>
+    </div>
+    <div id="showroom-stage" class="hidden"></div>
+    <div id="showroom-cards" class="codex-grid"></div>
+  </section>
+
+  <!-- EDITOR PANEL -->
+  <section id="editor-panel" class="panel hidden">
+    <div class="sidebar">
+      <h2>Tools</h2>
+      <div class="tool-grid" id="editor-tools">
+        <button data-tool="path" class="tool active" title="Enemy road"><span class="tile-ico" data-tile="path"></span>Path</button>
+        <button data-tool="mud" class="tool" title="Slow road: walkable, enemies crawl at 55% speed"><span class="tile-ico" data-tile="mud"></span>Mud</button>
+        <button data-tool="buildable" class="tool" title="Towers can be built here"><span class="tile-ico" data-tile="buildable"></span>Buildable</button>
+        <button data-tool="blocked" class="tool" title="Rock / water, blocks everything"><span class="tile-ico" data-tile="blocked"></span>Blocked</button>
+        <button data-tool="water" class="tool" title="Decorative water — blocks like rock"><span class="tile-ico" data-tile="water"></span>Water</button>
+        <button data-tool="forest" class="tool" title="Decorative forest — blocks like rock"><span class="tile-ico" data-tile="forest"></span>Forest</button>
+        <button data-tool="rock" class="tool" title="Decorative rock — blocks like rock"><span class="tile-ico" data-tile="rock"></span>Rock</button>
+        <button data-tool="spawn" class="tool" title="Where enemies appear"><span class="tile-ico" data-tile="spawn"></span>Spawn</button>
+        <button data-tool="base" class="tool" title="What you defend"><span class="tile-ico" data-tile="base"></span>Base</button>
+        <button data-tool="erase" class="tool" title="Back to buildable"><span class="tile-ico" data-tile="erase"></span>Erase</button>
+      </div>
+
+      <h2>Grid</h2>
+      <div class="row">
+        <label>W <input id="ed-cols" type="number" value="20" min="8" max="30" /></label>
+        <label>H <input id="ed-rows" type="number" value="15" min="8" max="20" /></label>
+        <button id="ed-resize">Resize</button>
+      </div>
+      <div class="row">
+        <button id="ed-clear">Clear</button>
+        <button id="ed-default">Load demo</button>
+      </div>
+
+      <h2>Rules</h2>
+      <div class="row">
+        <label title="Gold at the start of the run">💰 Gold <input id="ed-gold" type="number" value="220" min="0" max="9999" step="10" /></label>
+        <label title="Lives lost when enemies reach the base">❤️ Lives <input id="ed-lives" type="number" value="20" min="1" max="999" /></label>
+      </div>
+      <div class="row">
+        <label title="How many waves to survive">🌊 Waves <input id="ed-waves" type="number" value="20" min="1" max="100" /></label>
+        <label title="Enemy HP multiplier (100% = normal)">💪 Foes % <input id="ed-hp" type="number" value="100" min="10" max="500" step="5" /></label>
+      </div>
+      <div id="ed-rules-summary" class="status">20 waves · 220g · 20❤️ · foes 100%</div>
+
+      <h2>Waves</h2>
+      <div class="row">
+        <label title="Edit every wave's enemy types and counts"><input id="ed-custom-waves" type="checkbox" /> Custom waves</label>
+      </div>
+      <div class="row" id="ed-wave-tools" hidden>
+        <button id="ed-waves-reset" title="Replace every wave with the default curve">↺ Defaults</button>
+        <button id="ed-wave-add" title="Add a wave at the end">＋ Add wave</button>
+      </div>
+      <p class="hint" id="ed-wave-hint">Off = classic auto curve. Turn on to edit every wave below.</p>
+      <div id="ed-wave-list" class="wave-list"></div>
+
+      <h2>Map</h2>
+      <div class="row">
+        <input id="ed-name" type="text" value="my-map" placeholder="map name" />
+      </div>
+      <div class="row">
+        <button id="ed-save">💾 Save</button>
+        <button id="ed-load">📂 Load</button>
+        <button id="ed-delete">🗑️ Delete</button>
+      </div>
+      <div class="row">
+        <button id="ed-export">Export JSON</button>
+        <button id="ed-import">Import JSON</button>
+      </div>
+      <textarea id="ed-json" rows="4" placeholder="Exported JSON appears here. Paste JSON then hit Import."></textarea>
+
+      <h2>Validate & Play</h2>
+      <div id="ed-status" class="status">Draw a path from Spawn to Base.</div>
+      <button id="ed-play" class="primary">▶️ Test this map</button>
+    </div>
+    <div class="canvas-wrap">
+      <div id="editor3d-container">
+        <div id="editor3d-loading" class="view3d-loading hidden"><span>🎥 Loading 3D editor…</span></div>
+      </div>
+      <p class="hint">Drag to paint · right-drag (or hold <kbd>Space</kbd> + drag) to orbit · <kbd>Shift</kbd>-drag to pan · wheel to zoom. Spawn (red) and Base (blue) must be connected by Path or Mud tiles — mud slows enemies to 55%. Water, Forest and Rock decorate but block like <span class="tile-ico inline" data-tile="blocked"></span>Blocked.</p>
+    </div>
+  </section>
+
+  <!-- PLAY PANEL -->
+  <section id="play-panel" class="panel hidden">
+    <div class="sidebar">
+      <div id="campaign-bar" class="campaign hidden">
+        <b id="campaign-name">Level</b>
+        <small id="campaign-meta"></small>
+        <div class="row">
+          <button id="btn-back-levels">🗺️ Levels</button>
+          <button id="btn-next-level">➡️ Next</button>
+        </div>
+      </div>
+      <div id="sandbox-map-block">
+        <h2>Custom map</h2>
+        <div class="row">
+          <select id="play-map-select"></select>
+          <button id="play-load">Load</button>
+        </div>
+        <div class="row">
+          <button id="btn-generate" title="Hotkey: G — new random map">🎲 Generate random map [G]</button>
+        </div>
+      </div>
+      <div class="stats">
+        <div>💰 <span id="st-gold">0</span></div>
+        <div>❤️ <span id="st-lives">0</span></div>
+        <div>🌊 <span id="st-wave">0</span>/<span id="st-maxwave">20</span></div>
+      </div>
+
+      <h2>Build Towers</h2>
+      <div id="tower-shop"></div>
+      <div class="row">
+        <button id="btn-sell" title="Hotkey: X — click a tower then sell">Sell (+70%) [X]</button>
+        <button id="btn-upgrade" title="Hotkey: U — click a tower then upgrade">Upgrade [U]</button>
+      </div>
+      <div id="sel-info" class="status">Select a tower, then click green tiles.</div>
+
+      <h2>Game</h2>
+      <div class="row">
+        <button id="btn-start-wave" class="primary">Start wave [Space]</button>
+      </div>
+      <div id="wave-preview" class="wave-preview"></div>
+      <div class="row">
+        <button id="btn-pause">⏸️ Pause (P)</button>
+        <button id="btn-speed">1x speed (F)</button>
+        <button id="btn-restart">↩️ Restart (R)</button>
+      </div>
+      <div id="play-status" class="status"></div>
+    </div>
+    <div class="canvas-wrap">
+      <canvas id="game-canvas"></canvas>
+      <div id="view3d-container" class="hidden">
+        <div id="view3d-loading" class="view3d-loading hidden"><span>🎥 Loading 3D…</span></div>
+      </div>
+      <p class="hint">Place towers on green tiles. Enemies follow the brown road to your blue base.<br />
+      Keys: <kbd>Space</kbd> start wave · <kbd>P</kbd> pause · <kbd>F</kbd> speed · <kbd>R</kbd> restart · <kbd>G</kbd> random map · <kbd>1</kbd>–<kbd>9</kbd>, <kbd>0</kbd> towers · <kbd>U</kbd> upgrade · <kbd>X</kbd> sell · <kbd>M</kbd> mute · <kbd>Esc</kbd> deselect.<br />
+      <b>Drag</b> to orbit · <b>right-drag / Shift-drag / two fingers</b> to move the map · <b>wheel / pinch</b> to zoom · <b>click</b> to place/select · <b>🎯 / C</b> to recenter.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <small>Campaign maps, towers &amp; enemies load from <code>data/*.json</code> — play at <code>https://td.davinux.net</code>. Custom maps persist in localStorage.</small>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+
+<!-- victory -->
+<div id="victory-modal" class="modal hidden">
+  <div class="modal-card victory">
+    <div class="victory-trophy">🏆</div>
+    <b>★ Level Complete! ★</b>
+    <p id="victory-title">Level complete!</p>
+    <p id="victory-sub" class="victory-sub"></p>
+    <div id="victory-stars" class="victory-stars">★★★</div>
+    <div class="row modal-btns">
+      <button type="button" id="victory-next" class="primary">➡️ Next Level</button>
+      <button type="button" id="victory-menu">🗺️ Levels</button>
+    </div>
+  </div>
+</div>
+
+<!-- defeat -->
+<div id="defeat-modal" class="modal hidden">
+  <div class="modal-card defeat">
+    <div class="defeat-skull">💀</div>
+    <b>Game Over</b>
+    <p id="defeat-title">Your base has fallen.</p>
+    <p id="defeat-sub" class="defeat-sub"></p>
+    <div class="row modal-btns">
+      <button type="button" id="defeat-retry" class="primary">↩️ Retry</button>
+      <button type="button" id="defeat-menu">🏠 Main menu</button>
+    </div>
+    <p class="hint">Press <kbd>Esc</kbd> to retry.</p>
+  </div>
+</div>
+
+<!-- leave-run confirm -->
+<div id="leave-modal" class="modal hidden">
+  <div class="modal-card">
+    <b>⚠️ Leave this run?</b>
+    <p>Wave <span id="leave-wave">–</span> is in progress — leaving now loses this run's progress.</p>
+    <div class="row modal-btns">
+      <button id="leave-stay" class="primary">Stay and fight</button>
+      <button id="leave-go">Leave anyway</button>
+    </div>
+  </div>
+</div>
+
+<!-- in-game pause menu -->
+<div id="pause-modal" class="modal hidden">
+  <div class="modal-card pause-card">
+    <span class="eyebrow">Paused</span>
+    <b id="pause-title">Battle</b>
+    <div id="pause-stats" class="pause-stats"></div>
+    <div class="pause-menu">
+      <button type="button" id="pause-resume" class="primary"><i data-ui="play"></i>Resume</button>
+      <button type="button" id="pause-restart"><i data-ui="restart"></i>Restart run</button>
+      <button type="button" id="pause-sound"><i data-ui="volume"></i>Sound settings</button>
+      <button type="button" id="pause-levels"><i data-ui="levels"></i>Level select</button>
+      <button type="button" id="pause-home"><i data-ui="home"></i>Main menu</button>
+    </div>
+    <p class="hint">Press <kbd>Esc</kbd> to resume.</p>
+  </div>
+</div>
+
+<!-- sound settings -->
+<div id="settings-modal" class="modal hidden">
+  <div class="modal-card">
+    <b>🔊 Sound settings</b>
+    <p class="hint">Procedural effects, synthesized live — no downloads.</p>
+    <div class="row set-row">
+      <label><input type="checkbox" id="set-enabled" /> Sound effects</label>
+    </div>
+    <div class="row set-row">
+      <label for="set-volume">Volume</label>
+      <input type="range" id="set-volume" min="0" max="100" value="60" />
+      <b id="set-volume-val">60%</b>
+    </div>
+    <div class="row modal-btns">
+      <button type="button" id="set-mute">🔇 Mute</button>
+      <button type="button" id="set-close" class="primary">Done</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

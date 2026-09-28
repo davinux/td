@@ -1,0 +1,769 @@
+{
+  "about": "Campaign worlds. Range values are [map 1, map 20] and interpolate across the world. terrain = share of off-road tiles; road.length in tiles; enemies = spawn weights (types still unlock gradually through the campaign).",
+  "worlds": [
+    {
+      "id": "meadow",
+      "name": "Meadow",
+      "desc": "Rolling fields, groves and ponds. Learn the ropes.",
+      "baseGold": [
+        230,
+        210
+      ],
+      "baseLives": 20,
+      "hpFactor": [
+        1.1,
+        1.6
+      ],
+      "budget": [
+        1.0,
+        1.25
+      ],
+      "road": {
+        "length": [
+          [
+            70,
+            76
+          ],
+          [
+            52,
+            58
+          ]
+        ],
+        "straight": 0.55,
+        "turns": [
+          6,
+          13
+        ]
+      },
+      "terrain": {
+        "forest": [
+          0.06,
+          0.14
+        ],
+        "water": [
+          0.03,
+          0.07
+        ],
+        "rock": [
+          0.01,
+          0.03
+        ],
+        "cliff": [
+          0,
+          0.01
+        ]
+      },
+      "canyon": [
+        0,
+        0.05
+      ],
+      "mud": {
+        "patches": [
+          0,
+          1
+        ],
+        "len": [
+          2,
+          3
+        ]
+      },
+      "minBuild": [
+        70,
+        50
+      ],
+      "enemies": {
+        "grunt": 3,
+        "fast": 2,
+        "swarm": 2,
+        "shield": 1.2,
+        "wisp": 1,
+        "splitter": 0.8,
+        "tank": 0.6,
+        "phantom": 0.4,
+        "golem": 0.3
+      },
+      "maps": [
+        "Greenway",
+        "Clover Bend",
+        "Willow Run",
+        "Bramble Loop",
+        "Sunny Hollow",
+        "Millstream",
+        "Foxglove Fork",
+        "Daisy Chain",
+        "Orchard Walk",
+        "Old Oak Rise",
+        "Hayfield Turn",
+        "Thistle Pass",
+        "Rabbit Warren",
+        "Pondside",
+        "Lark Meadow",
+        "Brookbend",
+        "Hedgerow Maze",
+        "Barley Knot",
+        "Shepherd's Climb",
+        "Harvest Gate"
+      ],
+      "levelHp": [
+        2.608,
+        3.679,
+        2.61,
+        3.374,
+        2.194,
+        2.2,
+        2.71,
+        2.573,
+        2.457,
+        2.701,
+        1.988,
+        2.656,
+        2.178,
+        2.381,
+        1.564,
+        2.043,
+        1.75,
+        2.074,
+        1.748,
+        2.358
+      ]
+    },
+    {
+      "id": "crossing",
+      "name": "Crossing",
+      "desc": "Rivers carve the land and eat your best building spots.",
+      "baseGold": [
+        220,
+        200
+      ],
+      "baseLives": 20,
+      "hpFactor": [
+        1.35,
+        1.8
+      ],
+      "budget": [
+        1.2,
+        1.5
+      ],
+      "road": {
+        "length": [
+          [
+            64,
+            70
+          ],
+          [
+            48,
+            54
+          ]
+        ],
+        "straight": 0.6,
+        "turns": [
+          6,
+          12
+        ]
+      },
+      "river": true,
+      "terrain": {
+        "water": [
+          0.1,
+          0.18
+        ],
+        "forest": [
+          0.05,
+          0.08
+        ],
+        "rock": [
+          0.02,
+          0.04
+        ],
+        "cliff": [
+          0,
+          0.02
+        ]
+      },
+      "canyon": [
+        0,
+        0.1
+      ],
+      "mud": {
+        "patches": [
+          0,
+          1
+        ],
+        "len": [
+          2,
+          3
+        ]
+      },
+      "minBuild": [
+        60,
+        44
+      ],
+      "enemies": {
+        "grunt": 2,
+        "fast": 2,
+        "wisp": 2,
+        "swarm": 1.5,
+        "splitter": 1.5,
+        "shield": 1.4,
+        "tank": 0.7,
+        "phantom": 0.6,
+        "golem": 0.4
+      },
+      "maps": [
+        "Ford",
+        "Twin Banks",
+        "Heron Reach",
+        "Ferry Line",
+        "Reedbed",
+        "Oxbow",
+        "Stepping Stones",
+        "Weir",
+        "Kingfisher",
+        "Riverbend",
+        "Delta",
+        "Otter Run",
+        "Lock Keeper",
+        "Floodplain",
+        "Mill Race",
+        "Sandbar",
+        "Cascade",
+        "Estuary",
+        "Tidewater",
+        "Great Crossing"
+      ],
+      "levelHp": [
+        2.169,
+        2.879,
+        2.916,
+        3.17,
+        2.729,
+        3.08,
+        2.724,
+        2.139,
+        2.618,
+        2.078,
+        2.409,
+        2.979,
+        2.796,
+        2.381,
+        2.686,
+        2.916,
+        3.289,
+        3.276,
+        2.345,
+        2.932
+      ]
+    },
+    {
+      "id": "gauntlet",
+      "name": "Gauntlet",
+      "desc": "Boulder fields and canyon walls squeeze the road.",
+      "baseGold": [
+        210,
+        195
+      ],
+      "baseLives": 15,
+      "hpFactor": [
+        1.5,
+        1.95
+      ],
+      "budget": [
+        1.35,
+        1.7
+      ],
+      "road": {
+        "length": [
+          [
+            58,
+            64
+          ],
+          [
+            42,
+            48
+          ]
+        ],
+        "straight": 0.7,
+        "turns": [
+          5,
+          11
+        ]
+      },
+      "terrain": {
+        "rock": [
+          0.08,
+          0.14
+        ],
+        "cliff": [
+          0.05,
+          0.11
+        ],
+        "forest": [
+          0.03,
+          0.04
+        ],
+        "water": [
+          0,
+          0.02
+        ]
+      },
+      "canyon": [
+        0.25,
+        0.55
+      ],
+      "mud": {
+        "patches": [
+          0,
+          1
+        ],
+        "len": [
+          2,
+          2
+        ]
+      },
+      "minBuild": [
+        52,
+        38
+      ],
+      "enemies": {
+        "grunt": 2,
+        "shield": 2,
+        "tank": 2,
+        "fast": 1.2,
+        "golem": 1.2,
+        "swarm": 1,
+        "splitter": 1,
+        "wisp": 0.8,
+        "phantom": 0.8
+      },
+      "maps": [
+        "Narrows",
+        "Boulder Row",
+        "Quarry",
+        "Split Rock",
+        "Scree Slope",
+        "Hammerfall",
+        "Iron Gorge",
+        "Rockslide",
+        "Anvil",
+        "Deadfall",
+        "Crag Run",
+        "Flint Ridge",
+        "Stonecutter",
+        "The Chute",
+        "Rubble Gate",
+        "Granite Coil",
+        "Tor",
+        "Grindstone",
+        "Last Wall",
+        "The Gauntlet"
+      ],
+      "levelHp": [
+        1.861,
+        1.884,
+        2.079,
+        1.579,
+        1.451,
+        1.893,
+        1.969,
+        1.808,
+        1.28,
+        1.556,
+        1.517,
+        1.05,
+        1.408,
+        1.827,
+        1.733,
+        1.301,
+        1.5,
+        1.618,
+        1.776,
+        1.536
+      ]
+    },
+    {
+      "id": "mire",
+      "name": "Mire",
+      "desc": "Sunken marshes: mud slows the horde, but phantoms don't care.",
+      "baseGold": [
+        205,
+        190
+      ],
+      "baseLives": 15,
+      "hpFactor": [
+        1.65,
+        2.1
+      ],
+      "budget": [
+        1.55,
+        1.9
+      ],
+      "road": {
+        "length": [
+          [
+            60,
+            66
+          ],
+          [
+            46,
+            52
+          ]
+        ],
+        "straight": 0.4,
+        "turns": [
+          8,
+          15
+        ]
+      },
+      "terrain": {
+        "water": [
+          0.08,
+          0.13
+        ],
+        "forest": [
+          0.08,
+          0.12
+        ],
+        "rock": [
+          0.01,
+          0.03
+        ],
+        "cliff": [
+          0,
+          0.02
+        ]
+      },
+      "canyon": [
+        0.05,
+        0.15
+      ],
+      "mud": {
+        "patches": [
+          2,
+          4
+        ],
+        "len": [
+          2,
+          4
+        ]
+      },
+      "minBuild": [
+        52,
+        40
+      ],
+      "enemies": {
+        "phantom": 2.4,
+        "splitter": 2,
+        "swarm": 2,
+        "grunt": 1.5,
+        "wisp": 1.2,
+        "shield": 1.2,
+        "fast": 1,
+        "tank": 0.8,
+        "golem": 0.7
+      },
+      "maps": [
+        "Bogside",
+        "Peat Cut",
+        "Willow Sink",
+        "Lantern Fen",
+        "Sludge Way",
+        "Cattail",
+        "Drowned Lane",
+        "Murkwater",
+        "Toad Hollow",
+        "Witchlight",
+        "Silt Path",
+        "Fogmere",
+        "Rotten Ferry",
+        "Blackwater",
+        "Sinkhole",
+        "Moss Crown",
+        "Grave Fen",
+        "Quagmire",
+        "Deep Mire",
+        "Heart of the Bog"
+      ],
+      "levelHp": [
+        2.919,
+        2.781,
+        2.111,
+        2.267,
+        2.344,
+        2.913,
+        2.79,
+        2.413,
+        2.733,
+        2.251,
+        1.863,
+        2.366,
+        1.719,
+        2.146,
+        1.544,
+        2.432,
+        1.938,
+        1.827,
+        1.971,
+        1.788
+      ]
+    },
+    {
+      "id": "storm",
+      "name": "Stormpeak",
+      "desc": "Slate ridges and thin air. Fast foes, short roads.",
+      "baseGold": [
+        200,
+        185
+      ],
+      "baseLives": 15,
+      "hpFactor": [
+        1.8,
+        2.2
+      ],
+      "budget": [
+        1.7,
+        2.1
+      ],
+      "road": {
+        "length": [
+          [
+            54,
+            60
+          ],
+          [
+            40,
+            46
+          ]
+        ],
+        "straight": 0.65,
+        "turns": [
+          6,
+          12
+        ]
+      },
+      "terrain": {
+        "cliff": [
+          0.1,
+          0.17
+        ],
+        "rock": [
+          0.06,
+          0.1
+        ],
+        "forest": [
+          0.02,
+          0.03
+        ],
+        "water": [
+          0,
+          0.02
+        ]
+      },
+      "canyon": [
+        0.3,
+        0.6
+      ],
+      "mud": {
+        "patches": [
+          0,
+          1
+        ],
+        "len": [
+          2,
+          3
+        ]
+      },
+      "minBuild": [
+        48,
+        36
+      ],
+      "enemies": {
+        "fast": 3,
+        "wisp": 2.5,
+        "shield": 1.6,
+        "grunt": 1.2,
+        "tank": 1.2,
+        "swarm": 1,
+        "splitter": 0.8,
+        "golem": 0.8,
+        "phantom": 1
+      },
+      "maps": [
+        "Windgap",
+        "Slate Stair",
+        "Eagle's Rest",
+        "Thunder Col",
+        "Hailstone",
+        "Cloudwalk",
+        "Frostbite",
+        "Summit Trail",
+        "Howling Pass",
+        "Lightning Rod",
+        "Knife Edge",
+        "Avalanche",
+        "Rimefall",
+        "Cold Spire",
+        "Skyhook",
+        "Gale Terrace",
+        "Stormwatch",
+        "Whiteout",
+        "Crown Ridge",
+        "Stormpeak"
+      ],
+      "levelHp": [
+        2.048,
+        2.614,
+        2.436,
+        2.118,
+        2.321,
+        2.645,
+        2.574,
+        2.26,
+        1.891,
+        1.83,
+        2.547,
+        2.335,
+        2.492,
+        2.153,
+        2.141,
+        2.573,
+        2.128,
+        2.259,
+        2.004,
+        1.961
+      ]
+    },
+    {
+      "id": "abyss",
+      "name": "Abyss",
+      "desc": "The final descent. Voids everywhere, everything at once.",
+      "baseGold": [
+        200,
+        185
+      ],
+      "baseLives": 12,
+      "hpFactor": [
+        1.9,
+        2.35
+      ],
+      "budget": [
+        1.9,
+        2.4
+      ],
+      "road": {
+        "length": [
+          [
+            52,
+            58
+          ],
+          [
+            38,
+            44
+          ]
+        ],
+        "straight": 0.55,
+        "turns": [
+          7,
+          14
+        ]
+      },
+      "terrain": {
+        "water": [
+          0.12,
+          0.2
+        ],
+        "cliff": [
+          0.06,
+          0.1
+        ],
+        "rock": [
+          0.03,
+          0.05
+        ],
+        "forest": [
+          0.01,
+          0.02
+        ]
+      },
+      "canyon": [
+        0.2,
+        0.4
+      ],
+      "mud": {
+        "patches": [
+          1,
+          2
+        ],
+        "len": [
+          2,
+          3
+        ]
+      },
+      "minBuild": [
+        46,
+        34
+      ],
+      "enemies": {
+        "golem": 1.6,
+        "tank": 1.6,
+        "phantom": 1.6,
+        "shield": 1.6,
+        "splitter": 1.4,
+        "fast": 1.4,
+        "wisp": 1.2,
+        "grunt": 1,
+        "swarm": 1
+      },
+      "maps": [
+        "Brink",
+        "Hollow Stair",
+        "Void Walk",
+        "Ember Pit",
+        "Shade Road",
+        "Nether Bridge",
+        "Obsidian",
+        "Chasm",
+        "Wraith Way",
+        "Black Gate",
+        "Undertow",
+        "Ashen Coil",
+        "Soul Well",
+        "Dread Span",
+        "Nightfall",
+        "Oblivion",
+        "Last Light",
+        "Endless Deep",
+        "Throne Road",
+        "The Abyss"
+      ],
+      "levelHp": [
+        1.892,
+        1.998,
+        2.202,
+        1.933,
+        1.851,
+        1.598,
+        1.761,
+        2.175,
+        1.695,
+        1.703,
+        1.866,
+        1.876,
+        2.279,
+        2.022,
+        2.01,
+        1.852,
+        2.494,
+        2.188,
+        1.9,
+        2.462
+      ]
+    }
+  ],
+  "tuning": {
+    "budget": 300,
+    "growth": 0.3,
+    "growth2": 0.01,
+    "hpRamp": 1,
+    "hpCurve": 0.9
+  }
+}
