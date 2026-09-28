@@ -46,7 +46,7 @@ export async function loadContent(basePath = 'data') {
     towersRaw = await tRes.json();
     enemiesRaw = await eRes.json();
   } catch (err) {
-    throw new Error(`Could not load tower/enemy data (${err.message}). Play at https://td.davinux.net or serve locally with ./start-server.sh`);
+    throw new Error(`Could not load tower/enemy data (${err.message}). Play at https://td.davinux.net or serve locally with ./tools/start-server.sh`);
   }
 
   if (!Array.isArray(towersRaw.towers) || !towersRaw.towers.length)

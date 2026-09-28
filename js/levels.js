@@ -46,7 +46,7 @@ export async function loadCampaign(basePath = 'data') {
     mapCache.clear();
     return store;
   } catch (err) {
-    throw new Error(`Could not load campaign data (${err.message}). Play at https://td.davinux.net or serve locally with ./start-server.sh`);
+    throw new Error(`Could not load campaign data (${err.message}). Play at https://td.davinux.net or serve locally with ./tools/start-server.sh`);
   }
 }
 

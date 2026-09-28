@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Stop the static dev server started by start-server.sh.
-# Usage: ./stop-server.sh [port]  (default: 8000)
+# Stop the static dev server started by tools/start-server.sh.
+# Usage: ./tools/stop-server.sh [port]  (default: 8000)
 PORT="${1:-8000}"
 
 if command -v fuser >/dev/null 2>&1; then

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Start a static dev server for the Tower Defense game.
-# Usage: ./start-server.sh [port]  (default: 8000)
+# Usage: ./tools/start-server.sh [port]  (default: 8000)
 set -e
 PORT="${1:-8000}"
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 
 # Stop any previous server on this port (ignore errors)
 if command -v fuser >/dev/null 2>&1; then
